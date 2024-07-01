@@ -1,0 +1,57 @@
+@RestController
+@RequestMapping("/api/images")
+public class ImageController {
+
+    @Autowired
+    private ImageRepository imageRepository;
+
+    @Autowired
+    private OcrService ocrService;
+
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
+        try {
+          
+            String imageUrl = saveImage(file);
+
+           
+            String extractedText = ocrService.extractTextFromImage(file);
+
+            // Extract bold words (example: using regex)
+            List<String> boldWords = extractBoldWords(extractedText);
+
+            // Save extracted text and bold words to database
+            TextEntity textEntity = new TextEntity();
+            textEntity.setExtractedText(extractedText);
+            textEntity.setBoldWords(boldWords);
+
+            TextEntity savedTextEntity = textRepository.save(textEntity);
+
+            // Return response with image URL, extracted text, and bold words
+            Map<String, Object> response = new HashMap<>();
+            response.put("imageUrl", imageUrl);
+            response.put("extractedText", savedTextEntity.getExtractedText());
+            response.put("boldWords", savedTextEntity.getBoldWords());
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    private String saveImage(MultipartFile file) throws IOException {
+        
+        return "https://example.com/images/" + file.getOriginalFilename();
+    }
+
+    private List<String> extractBoldWords(String text) {
+        
+        List<String> boldWords = new ArrayList<>();
+        Pattern pattern = Pattern.compile("<b>(.*?)</b>");
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            boldWords.add(matcher.group(1));
+        }
+        return boldWords;
+    }
+}

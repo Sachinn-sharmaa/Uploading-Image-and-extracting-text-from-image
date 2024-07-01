@@ -1,0 +1,9 @@
+package repository.copy;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import entity.UploadImageFile;
+
+public interface UploadImageRepository extends JpaRepository<UploadImageFile, Long>{
+
+}

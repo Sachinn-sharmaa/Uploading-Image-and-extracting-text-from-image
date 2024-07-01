@@ -1,0 +1,22 @@
+package service;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class BoldWordExtractor {
+	
+	private static final Set<String> boldWordsSet = new HashSet<>(Arrays.asList("add","your","bold", "words"));
+	
+	public static String extractBoldWords(String text) {
+		StringBuilder boldWords = new StringBuilder();
+		String words[] = text.split(" ");
+		for(String word: words) {
+			if(boldWordsSet.contains(word.toLowerCase())) {
+				
+			}
+		}
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.backendUpload.Service;
+
+import java.util.HashSet;
+
+public class BoldWordExtractor {
+	
+	private static final Set<String> boldWordsSet = new HashSet<>();
+
+}

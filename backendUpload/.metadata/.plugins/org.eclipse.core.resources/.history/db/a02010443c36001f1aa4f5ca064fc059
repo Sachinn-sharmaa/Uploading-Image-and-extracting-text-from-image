@@ -1,0 +1,10 @@
+package com.backendUpload.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.backendUpload.Entity.UploadImageFile;
+
+import entity.UploadImageFile;
+
+public interface UploadImageRepository extends JpaRepository<com.backendUpload.Entity.UploadImageFile, Long>{
+
+}

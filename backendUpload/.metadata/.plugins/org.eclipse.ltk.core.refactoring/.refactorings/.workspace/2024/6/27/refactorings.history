@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;backendUpload/src/main/resources/Tess4J&apos;" deleteContents="false" description="Delete resource &apos;backendUpload/src/main/resources/Tess4J&apos;" element1="/backendUpload/src/main/resources/Tess4J" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1719731543185"/>
+</session>

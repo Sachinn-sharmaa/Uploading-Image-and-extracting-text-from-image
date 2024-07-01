@@ -1,0 +1,21 @@
+package entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class UploadImageFile {
+	@Id
+	@GenratedValue
+	private Long id;
+	
+	private String image;
+	
+	private String text;
+	
+	private String boldTextWords;
+	
+	
+	
+
+}
